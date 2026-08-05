@@ -14,6 +14,7 @@ const noBtn = document.getElementById("noBtn");
 const sendBtn = document.getElementById("sendBtn");
 const contactInput = document.getElementById("contactInput");
 const summaryText = document.getElementById("summaryText");
+const backgroundAudio = document.getElementById("backgroundAudio");
 
 let yesScale = 1;
 
@@ -77,6 +78,19 @@ noBtn.addEventListener("click", (event) => {
 yesBtn.addEventListener("click", () => {
   showScreen(3);
 });
+
+function startBackgroundAudio() {
+  if (!backgroundAudio) return;
+  backgroundAudio.volume = 0.12;
+  if (backgroundAudio.paused) {
+    backgroundAudio.play().catch(() => {
+      // Autoplay can be blocked until user interacts.
+    });
+  }
+}
+
+window.addEventListener("click", startBackgroundAudio, { once: true });
+window.addEventListener("keydown", startBackgroundAudio, { once: true });
 
 // Envia os dados para a API do SheetMonkey e mostra a tela de confirmação
 sendBtn.addEventListener("click", async () => {
