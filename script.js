@@ -15,10 +15,9 @@ const sendBtn = document.getElementById("sendBtn");
 const contactInput = document.getElementById("contactInput");
 const summaryText = document.getElementById("summaryText");
 const backgroundAudio = document.getElementById("backgroundAudio");
-const audioToggleBtn = document.getElementById("audioToggleBtn");
+const volumeSlider = document.getElementById("volumeSlider");
 
 let yesScale = 1;
-let musicEnabled = false;
 
 // Mostra apenas a tela correspondente ao número informado
 function showScreen(screenNumber) {
@@ -82,8 +81,10 @@ yesBtn.addEventListener("click", () => {
 });
 
 function startBackgroundAudio() {
-  if (!backgroundAudio || !musicEnabled) return;
-  backgroundAudio.volume = 0.04;
+  if (!backgroundAudio || !volumeSlider) return;
+  const volumeValue = Number(volumeSlider.value);
+  if (volumeValue === 0) return;
+  backgroundAudio.volume = volumeValue / 100;
   if (backgroundAudio.paused) {
     backgroundAudio.play().catch(() => {
       // Autoplay can be blocked until user interacts.
@@ -91,28 +92,22 @@ function startBackgroundAudio() {
   }
 }
 
-function updateAudioButton() {
-  if (!audioToggleBtn) return;
-  audioToggleBtn.textContent = musicEnabled ? "Música: ligada" : "Música: desligada";
-}
-
-function toggleBackgroundAudio() {
-  if (!backgroundAudio) return;
-  musicEnabled = !musicEnabled;
-  updateAudioButton();
-  backgroundAudio.volume = 0.04;
-  if (musicEnabled) {
+function updateBackgroundVolume() {
+  if (!backgroundAudio || !volumeSlider) return;
+  const volumeValue = Number(volumeSlider.value);
+  backgroundAudio.volume = volumeValue / 100;
+  if (volumeValue > 0 && backgroundAudio.paused) {
     backgroundAudio.play().catch(() => {
       // Autoplay may still be blocked until user interacts.
     });
-  } else {
+  }
+  if (volumeValue === 0) {
     backgroundAudio.pause();
-    backgroundAudio.currentTime = 0;
   }
 }
 
-if (audioToggleBtn) {
-  audioToggleBtn.addEventListener("click", toggleBackgroundAudio);
+if (volumeSlider) {
+  volumeSlider.addEventListener("input", updateBackgroundVolume);
 }
 
 window.addEventListener("click", startBackgroundAudio, { once: true });
