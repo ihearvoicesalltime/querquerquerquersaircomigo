@@ -14,9 +14,6 @@ const noBtn = document.getElementById("noBtn");
 const sendBtn = document.getElementById("sendBtn");
 const contactInput = document.getElementById("contactInput");
 const summaryText = document.getElementById("summaryText");
-const backgroundAudio = document.getElementById("backgroundAudio");
-const volumeSlider = document.getElementById("volumeSlider");
-
 let yesScale = 1;
 
 // Mostra apenas a tela correspondente ao número informado
@@ -80,38 +77,10 @@ yesBtn.addEventListener("click", () => {
   showScreen(3);
 });
 
-function startBackgroundAudio() {
-  if (!backgroundAudio || !volumeSlider) return;
-  const volumeValue = Number(volumeSlider.value);
-  if (volumeValue === 0) return;
-  backgroundAudio.volume = volumeValue / 100;
-  if (backgroundAudio.paused) {
-    backgroundAudio.play().catch(() => {
-      // Autoplay can be blocked until user interacts.
-    });
-  }
-}
-
-function updateBackgroundVolume() {
-  if (!backgroundAudio || !volumeSlider) return;
-  const volumeValue = Number(volumeSlider.value);
-  backgroundAudio.volume = volumeValue / 100;
-  if (volumeValue > 0 && backgroundAudio.paused) {
-    backgroundAudio.play().catch(() => {
-      // Autoplay may still be blocked until user interacts.
-    });
-  }
-  if (volumeValue === 0) {
-    backgroundAudio.pause();
-  }
-}
-
-if (volumeSlider) {
-  volumeSlider.addEventListener("input", updateBackgroundVolume);
-}
-
-window.addEventListener("click", startBackgroundAudio, { once: true });
-window.addEventListener("keydown", startBackgroundAudio, { once: true });
+window.addEventListener("load", () => {
+  showScreen(1);
+  setNoButtonSidePosition();
+});
 
 // Envia os dados para a API do SheetMonkey e mostra a tela de confirmação
 sendBtn.addEventListener("click", async () => {
