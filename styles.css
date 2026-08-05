@@ -118,23 +118,27 @@ body {
 }
 
 .top-controls {
+  position: absolute;
+  top: 20px;
+  right: 20px;
   display: flex;
-  justify-content: center;
-  margin-bottom: 16px;
+  justify-content: flex-end;
+  z-index: 10;
 }
 
 .audio-toggle-btn {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(10, 14, 25, 0.78);
   color: var(--text);
-  padding: 10px 18px;
+  padding: 8px 14px;
   border-radius: 999px;
-  font-size: 0.96rem;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.1);
+  font-size: 0.82rem;
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.22);
 }
 
 .audio-toggle-btn:hover {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .choice-buttons {
