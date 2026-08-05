@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Date Invitation App</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app">
+    <!-- Tela 1: Introdução -->
+    <section class="screen active" id="screen-1">
+      <div class="sparkles">💌</div>
+      <h1>Oi!</h1>
+      <p class="subtitle">Eu queria te perguntar uma coisa faz um tempo... mas sou meio tímido(a). Tá tudo bem se eu for direto?</p>
+      <button class="btn primary-btn" data-target="2">O que é?</button>
+    </section>
+
+    <!-- Tela 2: Pedido com pegadinha -->
+    <section class="screen" id="screen-2">
+      <h2>Você aceita sair comigo?</h2>
+      <p class="subtitle">(Prometo pagar os lanches 😋 e tentar não ser um caos completo.)</p>
+
+      <div class="btn-row">
+        <button class="btn yes-btn" id="yesBtn" data-target="3">Sim</button>
+      </div>
+
+      <button class="btn no-btn" id="noBtn">Não</button>
+    </section>
+
+    <!-- Tela 3: Comemoração -->
+    <section class="screen" id="screen-3">
+      <div class="sparkles">❤️❤️❤️</div>
+      <h1>EEEEEEE! 🎉</h1>
+      <p class="subtitle">Você acabou de me fazer a pessoa mais feliz do mundo. Isso é oficialmente um date, meu amorzinho 😭🥂</p>
+      <button class="btn primary-btn" data-target="4">Continuar</button>
+    </section>
+
+    <!-- Tela 4: Escolha do tipo de date -->
+    <section class="screen" id="screen-4">
+      <h2>O que você prefere fazer?</h2>
+      <div class="options-grid">
+        <button class="option-card" data-choice="Cafeteria ☕" data-next="5">Cafeteria ☕</button>
+        <button class="option-card" data-choice="Cinema 🎬" data-next="5">Cinema 🎬</button>
+        <button class="option-card" data-choice="Passeio no parque 🌳" data-next="5">Passeio no parque 🌳</button>
+        <button class="option-card" data-choice="Artes/Museu 🎨" data-next="5">Artes/Museu 🎨</button>
+        <button class="option-card" data-choice="Barzinho 🍻" data-next="5">Barzinho 🍻</button>
+        <button class="option-card" data-choice="Balada 🪩" data-next="5">Balada 🪩</button>
+      </div>
+    </section>
+
+    <!-- Tela 5: Escolha do local -->
+    <section class="screen" id="screen-5">
+      <h2>Para onde deveríamos ir?</h2>
+      <div class="options-grid">
+        <button class="option-card" data-choice="Seu lugar favorito 📍" data-next="6">Seu lugar favorito 📍</button>
+        <button class="option-card" data-choice="Meu lugar favorito 📍" data-next="6">Meu lugar favorito 📍</button>
+        <button class="option-card" data-choice="Me surpreenda! 🎲" data-next="6">Me surpreenda! 🎲</button>
+        <button class="option-card" data-choice="Vamos decidir juntos 🤝" data-next="6">Vamos decidir juntos 🤝</button>
+      </div>
+    </section>
+
+    <!-- Tela 6: Contato -->
+    <section class="screen" id="screen-6">
+      <h2>Como combinamos os detalhes?</h2>
+      <p class="subtitle">Deixa seu número, Instagram ou me fala se a gente continua no lugar que eu te mandei esse link. A etiqueta do romance é ser direto 😂</p>
+      <input id="contactInput" name="Contato" class="field" type="text" placeholder="Seu contato aqui..." />
+      <button class="btn primary-btn" id="sendBtn">Enviar 🚀</button>
+    </section>
+
+    <!-- Tela 7: Confirmação final -->
+    <section class="screen" id="screen-7">
+      <h1>Perfeito! 🎉</h1>
+      <div class="summary-box">
+        <p id="summaryText" class="subtitle" style="margin:0;"></p>
+      </div>
+      <p class="subtitle">Te chamo em breve! Mal posso esperar pelo nosso date! 🥰</p>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
