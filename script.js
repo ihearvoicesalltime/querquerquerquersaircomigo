@@ -47,14 +47,21 @@ optionCards.forEach((card) => {
   });
 });
 
-// Posiciona o botão "Não" em um lugar aleatório dentro da tela
-function setNoButtonRandomPosition() {
+// Posiciona o botão "Não" sempre ao lado do botão "Sim", sem ficar por cima
+function setNoButtonSidePosition() {
   const screen2 = document.getElementById("screen-2");
   const screenRect = screen2.getBoundingClientRect();
+  const yesRect = yesBtn.getBoundingClientRect();
+
+  const offsetX = 24;
+  const targetX = yesRect.left - screenRect.left + yesRect.width + offsetX;
+  const targetY = yesRect.top - screenRect.top + yesRect.height / 2 - noBtn.offsetHeight / 2;
+
   const maxX = screenRect.width - noBtn.offsetWidth - 16;
   const maxY = screenRect.height - noBtn.offsetHeight - 16;
-  const x = Math.random() * Math.max(0, maxX);
-  const y = Math.random() * Math.max(0, maxY);
+
+  const x = Math.min(Math.max(targetX, 16), maxX);
+  const y = Math.min(Math.max(targetY, 16), maxY);
 
   noBtn.style.left = `${x}px`;
   noBtn.style.top = `${y}px`;
@@ -67,13 +74,13 @@ function growYesButton() {
 }
 
 noBtn.addEventListener("mouseenter", () => {
-  setNoButtonRandomPosition();
+  setNoButtonSidePosition();
 });
 
 noBtn.addEventListener("click", (event) => {
   event.preventDefault();
   event.stopPropagation();
-  setNoButtonRandomPosition();
+  setNoButtonSidePosition();
   growYesButton();
 });
 
@@ -109,4 +116,5 @@ sendBtn.addEventListener("click", async () => {
 
 window.addEventListener("load", () => {
   showScreen(1);
+  setNoButtonSidePosition();
 });
