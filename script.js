@@ -83,7 +83,7 @@ yesBtn.addEventListener("click", () => {
 
 function startBackgroundAudio() {
   if (!backgroundAudio || !musicEnabled) return;
-  backgroundAudio.volume = 0.06;
+  backgroundAudio.volume = 0.04;
   if (backgroundAudio.paused) {
     backgroundAudio.play().catch(() => {
       // Autoplay can be blocked until user interacts.
@@ -100,7 +100,7 @@ function toggleBackgroundAudio() {
   if (!backgroundAudio) return;
   musicEnabled = !musicEnabled;
   updateAudioButton();
-  backgroundAudio.volume = 0.06;
+  backgroundAudio.volume = 0.04;
   if (musicEnabled) {
     backgroundAudio.play().catch(() => {
       // Autoplay may still be blocked until user interacts.

@@ -127,18 +127,28 @@ body {
 }
 
 .audio-toggle-btn {
-  background: rgba(10, 14, 25, 0.78);
+  background: rgba(10, 14, 25, 0.72);
   color: var(--text);
-  padding: 8px 14px;
-  border-radius: 999px;
-  font-size: 0.82rem;
+  padding: 10px;
+  border-radius: 50%;
+  font-size: 1rem;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
   backdrop-filter: blur(16px);
   border: 1px solid rgba(255,255,255,0.12);
-  box-shadow: 0 14px 28px rgba(0,0,0,0.22);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.22);
 }
 
 .audio-toggle-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.audio-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .choice-buttons {
