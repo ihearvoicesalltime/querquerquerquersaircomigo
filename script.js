@@ -47,24 +47,14 @@ optionCards.forEach((card) => {
   });
 });
 
-// Posiciona o botão "Não" sempre ao lado do botão "Sim", sem ficar por cima
-function setNoButtonSidePosition() {
-  const screen2 = document.getElementById("screen-2");
-  const screenRect = screen2.getBoundingClientRect();
-  const yesRect = yesBtn.getBoundingClientRect();
+// Mantém o botão "Não" sempre separado do botão "Sim"
+function setNoButtonSidePosition(extraGap = 0) {
+  const baseGap = window.innerWidth < 480 ? 72 : 110;
+  const gap = baseGap + extraGap;
 
-  const offsetX = 24;
-  const targetX = yesRect.left - screenRect.left + yesRect.width + offsetX;
-  const targetY = yesRect.top - screenRect.top + yesRect.height / 2 - noBtn.offsetHeight / 2;
-
-  const maxX = screenRect.width - noBtn.offsetWidth - 16;
-  const maxY = screenRect.height - noBtn.offsetHeight - 16;
-
-  const x = Math.min(Math.max(targetX, 16), maxX);
-  const y = Math.min(Math.max(targetY, 16), maxY);
-
-  noBtn.style.left = `${x}px`;
-  noBtn.style.top = `${y}px`;
+  noBtn.style.marginLeft = `${gap}px`;
+  noBtn.style.marginRight = "0px";
+  noBtn.style.transform = "translateX(0)";
 }
 
 // Aumenta o botão "Sim" sempre que o usuário tenta clicar no "Não"
@@ -74,13 +64,13 @@ function growYesButton() {
 }
 
 noBtn.addEventListener("mouseenter", () => {
-  setNoButtonSidePosition();
+  setNoButtonSidePosition(24);
 });
 
 noBtn.addEventListener("click", (event) => {
   event.preventDefault();
   event.stopPropagation();
-  setNoButtonSidePosition();
+  setNoButtonSidePosition(24);
   growYesButton();
 });
 

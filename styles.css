@@ -117,6 +117,15 @@ body {
   transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
 }
 
+.choice-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+
 .btn:hover,
 .option-card:hover {
   transform: translateY(-2px);
@@ -138,14 +147,6 @@ body {
   box-shadow: 0 10px 26px rgba(243, 142, 184, 0.26);
 }
 
-.btn-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
 /* Botões de resposta */
 .yes-btn {
   background: linear-gradient(135deg, #3bc98d, #60e3a1);
@@ -158,10 +159,6 @@ body {
 }
 
 .no-btn {
-  position: absolute;
-  left: 50%;
-  top: 72%;
-  transform: translate(-50%, -50%);
   background: linear-gradient(135deg, #ff7287, #ff5a6d);
   color: white;
   padding: 14px 30px;
@@ -169,6 +166,7 @@ body {
   min-width: 110px;
   z-index: 3;
   box-shadow: 0 10px 26px rgba(255, 107, 122, 0.28);
+  margin-left: 24px;
 }
 
 /* Cards de seleção */
