@@ -89,13 +89,13 @@ sendBtn.addEventListener("click", async () => {
 
   const now = new Date();
   const pad = (value) => String(value).padStart(2, "0");
-  const createdAt = `${pad(now.getDate())}/${pad(now.getMonth() + 1)}/${now.getFullYear()} ${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
+  const createdAt = `${pad(now.getDate())}/${pad(now.getMonth() + 1)}/${now.getFullYear()} ${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())} (local)`;
 
   const formBody = new URLSearchParams();
   formBody.append("Date", state.dateType);
   formBody.append("Local", state.location);
   formBody.append("Contato", state.contact);
-  formBody.append("Created", `'${createdAt}`);
+  formBody.append("Created", `Data: ${createdAt}`);
 
   try {
     await fetch("https://api.sheetmonkey.io/form/uuANJFnxtU2K4XNUoGDtWv", {
