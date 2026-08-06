@@ -87,13 +87,9 @@ sendBtn.addEventListener("click", async () => {
   state.contact = contactInput.value.trim() || "Sem contato informado";
   summaryText.textContent = `Date: ${state.dateType} | Local: ${state.location} | Contato: ${state.contact}`;
 
-  const createdAt = new Date().toLocaleString("pt-BR", {
-    day: "2-digit",
-    month: "2-digit",
-    year: "numeric",
-    hour: "2-digit",
-    minute: "2-digit"
-  });
+  const now = new Date();
+  const pad = (value) => String(value).padStart(2, "0");
+  const createdAt = `${pad(now.getDate())}/${pad(now.getMonth() + 1)}/${now.getFullYear()} ${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
 
   const formBody = new URLSearchParams();
   formBody.append("Date", state.dateType);
