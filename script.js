@@ -87,11 +87,19 @@ sendBtn.addEventListener("click", async () => {
   state.contact = contactInput.value.trim() || "Sem contato informado";
   summaryText.textContent = `Date: ${state.dateType} | Local: ${state.location} | Contato: ${state.contact}`;
 
+  const createdAt = new Date().toLocaleString("pt-BR", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit"
+  });
+
   const formBody = new URLSearchParams();
   formBody.append("Date", state.dateType);
   formBody.append("Local", state.location);
   formBody.append("Contato", state.contact);
-  formBody.append("Created", "x-sheetmonkey-current-date-time");
+  formBody.append("Created", `'${createdAt}`);
 
   try {
     await fetch("https://api.sheetmonkey.io/form/uuANJFnxtU2K4XNUoGDtWv", {
